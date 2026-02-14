@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Features | CareerCompass AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        .bg-navy { background-color: #0A192F; }
+        .text-neon { color: #2ECC71; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1); }
+    </style>
+</head>
+<body class="bg-navy text-white">
+
+    <nav class="fixed w-full z-50 glass flex justify-between items-center px-8 py-6">
+        <div class="text-2xl font-bold tracking-tighter">
+            <a href="index.html">Career<span class="text-neon">Compass</span></a>
+        </div>
+        <div class="flex space-x-6 text-sm font-medium">
+            <a href="index.html" class="text-gray-400 hover:text-white transition">← Back to Home</a>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-8 pt-40 pb-20">
+        <div class="text-center mb-20">
+            <h1 class="text-5xl font-bold mb-6">Our Core <span class="text-neon">Technology</span></h1>
+            <p class="text-gray-400 text-lg max-w-2xl mx-auto">
+                CareerCompass isn't just a resume checker. We use proprietary AI models trained on millions of successful placements.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-10">
+            <div class="glass p-10 rounded-3xl hover:border-neon/50 transition duration-500">
+                <div class="bg-neon/10 w-14 h-14 rounded-2xl flex items-center justify-center mb-6">
+                    <span class="text-2xl">🧠</span>
+                </div>
+                <h3 class="text-2xl font-bold mb-4">Contextual Parsing</h3>
+                <p class="text-gray-400 leading-relaxed">
+                    Most ATS software looks for exact keyword matches. Our AI understands **context**. If you mention "managing server-side logic," our AI knows you are proficient in Backend Engineering even if you don't use the specific term.
+                </p>
+            </div>
+
+            <div class="glass p-10 rounded-3xl hover:border-neon/50 transition duration-500">
+                <div class="bg-neon/10 w-14 h-14 rounded-2xl flex items-center justify-center mb-6">
+                    <span class="text-2xl">📈</span>
+                </div>
+                <h3 class="text-2xl font-bold mb-4">Market Demand Analytics</h3>
+                <p class="text-gray-400 leading-relaxed">
+                    We sync with global job boards every 6 hours. We don't just tell you what's wrong with your resume; we tell you which skills are currently "Hot" in the market so you can prioritize your learning.
+                </p>
+            </div>
+
+            <div class="glass p-10 rounded-3xl hover:border-neon/50 transition duration-500">
+                <div class="bg-neon/10 w-14 h-14 rounded-2xl flex items-center justify-center mb-6">
+                    <span class="text-2xl">⚡</span>
+                </div>
+                <h3 class="text-2xl font-bold mb-4">6-Week Gap Closure</h3>
+                <p class="text-gray-400 leading-relaxed">
+                    Our roadmap provides a day-by-day plan to learn missing skills. It includes specific YouTube tutorials, GitHub project ideas, and documentation links tailored to your target job.
+                </p>
+            </div>
+
+            <div class="glass p-10 rounded-3xl hover:border-neon/50 transition duration-500">
+                <div class="bg-neon/10 w-14 h-14 rounded-2xl flex items-center justify-center mb-6">
+                    <span class="text-2xl">🎤</span>
+                </div>
+                <h3 class="text-2xl font-bold mb-4">AI Mock Interviews</h3>
+                <p class="text-gray-400 leading-relaxed">
+                    Coming Soon: A voice-enabled AI recruiter that asks you technical questions based on your resume and provides a "Confidence Score" after the call.
+                </p>
+            </div>
+        </div>
+
+        <div class="mt-24 text-center glass p-12 rounded-3xl border-neon/30">
+            <h2 class="text-3xl font-bold mb-4">Ready to see it in action?</h2>
+            <p class="text-gray-400 mb-8">Upload your resume now and get your first scan for free.</p>
+            <a href="index.html" class="bg-neon text-navy px-10 py-4 rounded-full font-bold text-lg hover:scale-105 transition inline-block text-black">
+                Get Started Now
+            </a>
+        </div>
+    </main>
+
+</body>
+</html>

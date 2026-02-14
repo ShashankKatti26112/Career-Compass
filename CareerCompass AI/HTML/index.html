@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareerCompass | AI-Powered Job Placement</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        .bg-navy { background-color: #0A192F; }
+        .text-neon { color: #2ECC71; }
+        .bg-neon { background-color: #2ECC71; }
+        .border-neon { border-color: #2ECC71; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); }
+    </style>
+</head>
+<body class="bg-navy text-white">
+
+    <nav class="fixed w-full z-50 glass flex justify-between items-center px-8 py-6">
+        <div class="text-2xl font-bold tracking-tighter">Career<span class="text-neon">Compass</span></div>
+        <div class="hidden md:flex space-x-8 text-sm font-medium text-gray-400">
+            <a href="features.html" class="hover:text-neon transition">Features</a>
+            <a href="success stories.html" class="hover:text-neon transition">Success Stories</a>
+            <a href="#pricing" class="hover:text-neon transition">Pricing</a>
+        </div>
+        <button class="bg-neon text-navy px-5 py-2 rounded-full font-bold text-sm hover:scale-105 transition">Login</button>
+    </nav>
+
+    <section class="max-w-7xl mx-auto px-8 pt-40 pb-32 text-center">
+        <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+            Stop Applying Blindly. <br>
+            <span class="text-neon">Get Placed with AI.</span>
+        </h1>
+        <p class="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-10">
+            We bridge the gap between graduation and your first paycheck. Upload your resume and let our AI map your path to a 6-figure role.
+        </p>
+        
+        <div class="flex flex-col items-center justify-center">
+            <label for="file-upload" class="cursor-pointer group">
+                <div class="bg-white/5 border-2 border-dashed border-gray-600 group-hover:border-neon p-12 rounded-2xl transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto mb-4 text-gray-500 group-hover:text-neon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                    </svg>
+                    <span class="text-lg font-semibold block text-white">Drop your resume here</span>
+                    <span class="text-sm text-gray-500">PDF, DOCX (Max 5MB)</span>
+                </div>
+                <input id="file-upload" type="file" class="hidden" onchange="handleFileUpload(event)">
+            </label>
+        </div>
+    </section>
+
+    <section id="dashboard" class="max-w-5xl mx-auto px-8 py-24 hidden opacity-0 transition-all duration-1000">
+        <div class="glass rounded-3xl p-8 shadow-2xl">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+                <div>
+                    <h2 class="text-2xl font-bold text-white">Candidate Dashboard</h2>
+                    <p class="text-gray-400" id="file-name-display">Analysis for: resume.pdf</p>
+                </div>
+                <div class="mt-4 md:mt-0 text-center">
+                    <div class="text-xs uppercase tracking-widest text-gray-500 mb-1">Job Readiness Score</div>
+                    <div class="text-5xl font-bold text-neon">68<span class="text-xl text-gray-500">/100</span></div>
+                </div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-white/5 p-6 rounded-xl border border-white/5">
+                    <h4 class="font-bold mb-4 text-neon">Immediate Improvements</h4>
+                    <ul class="space-y-3 text-sm text-gray-300">
+                        <li class="flex items-center">🔴 Missing "Cloud Computing" keywords</li>
+                        <li class="flex items-center">🔴 Education section is too verbose</li>
+                        <li class="flex items-center">🟡 Add a link to GitHub portfolio</li>
+                    </ul>
+                </div>
+                <div class="bg-white/5 p-6 rounded-xl border border-white/5">
+                    <h4 class="font-bold mb-4 text-neon">Recommended Role</h4>
+                    <p class="text-lg font-semibold text-white">Associate Frontend Developer</p>
+                    <p class="text-sm text-gray-400 mt-2">Market Demand: <span class="text-white">High 🔥</span></p>
+                    <button onclick="scrollToPricing()" class="mt-4 w-full bg-neon text-navy py-2 rounded-lg text-sm font-bold hover:brightness-110 transition">Unlock Full Roadmap</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="pricing" class="py-24 bg-black/20">
+    <div class="max-w-7xl mx-auto px-8 text-center">
+        <h2 class="text-3xl font-bold mb-16 uppercase tracking-widest">Select Your Plan</h2>
+        <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div class="p-10 glass rounded-3xl border border-white/10 hover:border-white/30 transition">
+                <h3 class="text-xl font-bold text-gray-400">Basic Scan</h3>
+                <div class="text-4xl font-bold my-4">₹499</div>
+                <ul class="text-gray-400 space-y-3 mb-8 text-left text-sm">
+                    <li>✓ 1 Detailed AI Resume Audit</li>
+                    <li>✓ ATS Keyword Analysis</li>
+                    <li>✓ Formatting Score</li>
+                    <li>✓ Direct Bank Support</li>
+                </ul>
+                <button onclick="openPaymentModal(499, 'Basic Scan')" class="w-full py-3 border border-white/20 rounded-xl font-bold hover:bg-white/5 transition">
+                    Get Basic
+                </button>
+            </div>
+            <div class="p-10 glass rounded-3xl border-2 border-neon relative scale-105 shadow-2xl">
+                <div class="absolute -top-4 right-8 bg-neon text-navy px-3 py-1 rounded-full text-xs font-bold uppercase text-black">Best Value</div>
+                <h3 class="text-xl font-bold">Pro</h3>
+                <div class="text-4xl font-bold my-4 text-neon">₹1499</div>
+                <ul class="text-gray-400 space-y-3 mb-8 text-left text-sm">
+                    <li>✓ limited Resume Audits</li>
+                    <li>✓ 6-Week Custom Roadmap</li>
+                    <li>✓ AI Mock Interview Access</li>
+                    <li>✓ Direct Bank Support</li>
+                </ul>
+                <button onclick="openPaymentModal(1499, 'Pro Accelerator')" class="w-full py-3 bg-neon text-navy font-bold rounded-xl hover:scale-105 transition text-black">
+                    Go Pro Now
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+    <section id="pricing" class="py-24 bg-black/20">
+        <div class="max-w-7xl mx-auto px-8 text-center">
+            <h2 class="text-3xl font-bold mb-16">Simple Pricing to Get You Placed</h2>
+            <div class="flex justify-center">
+                <div class="p-10 glass rounded-3xl border-2 border-neon relative max-w-sm w-full">
+                    <div class="absolute -top-4 right-8 bg-neon text-navy px-3 py-1 rounded-full text-xs font-bold uppercase">Popular</div>
+                    <h3 class="text-xl font-bold">Pro Accelerator</h3>
+                    <div class="text-4xl font-bold my-4">₹2499</div>
+                    <ul class="text-gray-400 space-y-3 mb-8 text-left">
+                        <li>✓ Unlimited Resume Audits</li>
+                        <li>✓ 6-Week Custom Roadmap</li>
+                        <li>✓ AI Mock Interview Access</li>
+                        <li>✓ Priority Support</li>
+                    </ul>
+                    <button onclick="openPaymentModal(1499)" class="w-full py-3 bg-neon text-navy font-bold rounded-xl hover:scale-105 transition uppercase tracking-wider">
+                        Unlock Pro Now
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="payment-modal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/90 p-4 backdrop-blur-sm">
+        <div class="glass w-full max-w-md p-8 rounded-3xl text-center border border-white/20">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold">Secure Checkout</h2>
+                <button onclick="closePaymentModal()" class="text-gray-400 hover:text-white text-2xl">&times;</button>
+            </div>
+            <p class="text-gray-400 mb-6">Scan with any UPI App (GPay, PhonePe, Paytm)</p>
+            <div class="bg-white p-4 inline-block rounded-2xl mb-4 shadow-xl">
+                <img id="upi-qr-code" src="" alt="Payment QR Code" class="w-52 h-52">
+            </div>
+            <div class="mb-6">
+                <span class="text-gray-400 block text-sm mb-1 font-medium">Total Amount</span>
+                <span id="display-price" class="text-3xl font-bold text-neon">₹1499</span>
+            </div>
+            <button onclick="confirmPayment()" class="w-full bg-neon text-navy font-bold py-4 rounded-xl hover:brightness-110 transition">
+                I've Completed Payment
+            </button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+    <script>
+        // PDF.js Configuration
+        const pdfjsLib = window['pdfjs-dist/build/pdf'];
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
+
+        // Payment Configuration
+        const PAYMENT_CONFIG = {
+            upiId: "shashankkatti32@okicici", // Replace with your UPI ID
+            merchantName: "CareerCompass"
+            
+        };
+
+        async function handleFileUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            document.getElementById('file-name-display').innerText = `Analysis for: ${file.name}`;
+
+            if (file.type === "application/pdf") {
+                const reader = new FileReader();
+                reader.onload = async function() {
+                    const typedarray = new Uint8Array(this.result);
+                    try {
+                        const pdf = await pdfjsLib.getDocument(typedarray).promise;
+                        let fullText = "";
+                        for (let i = 1; i <= pdf.numPages; i++) {
+                            const page = await pdf.getPage(i);
+                            const content = await page.getTextContent();
+                            fullText += content.items.map(item => item.str).join(" ");
+                        }
+                        console.log("PDF Content Extracted successfully");
+                        showDashboard();
+                    } catch (err) {
+                        console.error("Error reading PDF:", err);
+                    }
+                };
+                reader.readAsArrayBuffer(file);
+            } else {
+                showDashboard();
+            }
+        }
+
+        function showDashboard() {
+            const dash = document.getElementById('dashboard');
+            dash.classList.remove('hidden');
+            setTimeout(() => {
+                dash.classList.add('opacity-100');
+                dash.scrollIntoView({ behavior: 'smooth' });
+            }, 100);
+        }
+
+        function scrollToPricing() {
+            document.getElementById('pricing').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Payment Functions
+        function openPaymentModal(amount) {
+            const modal = document.getElementById('payment-modal');
+            const qrImg = document.getElementById('upi-qr-code');
+            const priceText = document.getElementById('display-price');
+
+            const upiUrl = `upi://pay?pa=${PAYMENT_CONFIG.upiId}&pn=${encodeURIComponent(PAYMENT_CONFIG.merchantName)}&am=${amount}&cu=INR`;
+            const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(upiUrl)}`;
+
+            qrImg.src = qrApiUrl;
+            priceText.innerText = `₹${amount}`;
+            
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closePaymentModal() {
+            const modal = document.getElementById('payment-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function confirmPayment() {
+            alert("Verification Started! We are verifying your transaction. You will receive an email confirmation shortly.");
+            closePaymentModal();
+        }
+    </script>
+</body>
+</html>

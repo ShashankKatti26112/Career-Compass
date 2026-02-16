@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | CareerCompass AI</title>
+    <title>Create Account | CareerCompass AI</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
@@ -26,55 +26,51 @@
     <div class="flex-grow flex items-center justify-center px-4 pb-20">
         <div class="glass w-full max-w-md p-10 rounded-3xl shadow-2xl">
             <div class="text-center mb-10">
-                <h1 class="text-3xl font-bold mb-2">Welcome Back</h1>
-                <p class="text-gray-400">Continue your journey to a dream job</p>
+                <h1 class="text-3xl font-bold mb-2">Create Account</h1>
+                <p class="text-gray-400">Join 5,000+ students getting placed</p>
             </div>
 
-            <form onsubmit="handleLogin(event)" class="space-y-6">
+            <form onsubmit="handleSignup(event)" class="space-y-5">
                 <div>
-                    <label class="block text-sm font-medium text-gray-400 mb-2">Email Address</label>
-                    <input type="email" required class="input-field w-full p-4 rounded-xl text-white" placeholder="name@college.edu">
+                    <label class="block text-sm font-medium text-gray-400 mb-2">Full Name</label>
+                    <input type="text" required class="input-field w-full p-4 rounded-xl text-white" placeholder="John Doe">
                 </div>
 
                 <div>
-                    <div class="flex justify-between mb-2">
-                        <label class="text-sm font-medium text-gray-400">Password</label>
-                        <button type="button" onclick="handleForgotPassword()" class="text-xs text-neon hover:underline">
-                            Forgot?
-                        </button>
-                    </div>
+                    <label class="block text-sm font-medium text-gray-400 mb-2">Email Address</label>
+                    <input type="email" required class="input-field w-full p-4 rounded-xl text-white" placeholder="john@example.com">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-400 mb-2">Password</label>
                     <input type="password" required class="input-field w-full p-4 rounded-xl text-white" placeholder="••••••••">
                 </div>
 
-                <button type="submit" class="bg-neon text-black w-full py-4 rounded-xl font-bold hover:scale-[1.02] transition-transform active:scale-95">
-                    Sign In
+                <div class="flex items-start space-x-2 py-2">
+                    <input type="checkbox" required class="mt-1 accent-neon">
+                    <label class="text-xs text-gray-400">I agree to the Terms of Service and Privacy Policy</label>
+                </div>
+
+                <button type="submit" class="bg-neon text-black w-full py-4 rounded-xl font-bold hover:scale-[1.02] transition-transform active:scale-95 mt-4">
+                    Create My Account
                 </button>
             </form>
-            <div class="mt-8 text-center">
+
+            <div class="mt-8 text-center border-t border-white/10 pt-6">
                 <p class="text-gray-500 text-sm">
-                    Don't have an account? 
-                    <a href="#" class="text-neon font-semibold hover:underline">Create Account</a>
+                    Already have an account? 
+                    <a href="login.html" class="text-neon font-semibold hover:underline">Log In here</a>
                 </p>
             </div>
         </div>
     </div>
 
     <script>
-        // Handle User Login
-        function handleLogin(event) {
+        function handleSignup(event) {
             event.preventDefault();
-            alert("Login Successful! Redirecting to your dashboard...");
-            window.location.href = "index.html";
-        }
-
-        // Handle Forgot Password
-        function handleForgotPassword() {
-            const email = prompt("Enter your registered email address:");
-            if (email) {
-                // In a production app, this would trigger an API call to Firebase/Supabase
-                alert("A password reset link has been sent to " + email + ". Please check your inbox (and spam folder).");
-                window.location.href = "index.html";
-            }
+            // Simulating account creation
+            alert("Account created successfully! Welcome to CareerCompass.");
+            window.location.href = "login.html";
         }
     </script>
 </body>

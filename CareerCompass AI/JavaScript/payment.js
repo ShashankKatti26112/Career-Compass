@@ -1,41 +1,48 @@
-// --- Payment Configuration ---
+// --- Unified Configuration ---
 const CONFIG = {
-    upiId: "6363988040@upi", // REPLACE THIS with your actual UPI ID (PhonePe/GPay/Paytm)
-    merchantName: "CareerCompassAI",
-    minPrice: 999 // The absolute minimum price allowed (Safety check)
-};
-const PAYMENT_CONFIG = {
-    upiId: "shashankkatti32@okicici",
+    upiId: "shashankkatti32@okicici", 
     merchantName: "CareerCompass",
-    // Adding Bank Transfer Details
     bankDetails: {
         accountName: "Shashank Katti",
-        accountNumber: "XXXXXXXXXX376401", // Replace with your real number
-        ifscCode: "KARBXXXXXXX",       // Replace with your real IFSC
+        accountNumber: "XXXXXXXXXX376401",
+        ifscCode: "KARBXXXXXXX",
         bankName: "KBL Bank"
     }
 };
-function openPaymentModal(requestedAmount) {
+
+/**
+ * Opens the payment modal with dynamic plan details
+ * @param {number} amount - The price (499, 1499, or 2499)
+ * @param {string} planName - The name of the tier
+ */
+function openPaymentModal(amount, planName) {
     const modal = document.getElementById('payment-modal');
     const qrImage = document.getElementById('upi-qr-code');
     const priceDisplay = document.getElementById('display-price');
-
-    // 1. Minimum Price Enforcement
-    let finalAmount = requestedAmount;
-    if (requestedAmount < CONFIG.minPrice) {
-        finalAmount = CONFIG.minPrice;
-    }
-
-    // 2. Generate UPI URL 
-    // Format: upi://pay?pa=VPA&pn=NAME&am=AMOUNT&cu=CURRENCY
-    const upiUrl = `upi://pay?pa=${CONFIG.upiId}&pn=${encodeURIComponent(CONFIG.merchantName)}&am=${finalAmount}&cu=INR`;
     
-    // 3. Generate QR Image using a Free API (QRServer)
+    // Add these IDs to your HTML elements in index.html/pricing.html
+    const planDisplay = document.getElementById('selected-plan-name'); 
+    const bankNameDisplay = document.getElementById('bank-acc-name');
+    const bankNoDisplay = document.getElementById('bank-acc-no');
+    const bankIfscDisplay = document.getElementById('bank-ifsc');
+
+    // 1. Update Plan Details so user isn't confused
+    if(planDisplay) planDisplay.innerText = planName;
+    priceDisplay.innerText = `₹${amount}`;
+
+    // 2. Update Bank Details for Manual Transfer
+    if(bankNameDisplay) bankNameDisplay.innerText = CONFIG.bankDetails.accountName;
+    if(bankNoDisplay) bankNoDisplay.innerText = CONFIG.bankDetails.accountNumber;
+    if(bankIfscDisplay) bankIfscDisplay.innerText = CONFIG.bankDetails.ifscCode;
+
+    // 3. Generate Dynamic UPI URL 
+    const upiUrl = `upi://pay?pa=${CONFIG.upiId}&pn=${encodeURIComponent(CONFIG.merchantName)}&am=${amount}&cu=INR`;
+    
+    // 4. Generate QR Image
     const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(upiUrl)}`;
 
-    // 4. Update UI
+    // 5. Show Modal
     qrImage.src = qrApiUrl;
-    priceDisplay.innerText = `₹${finalAmount}`;
     modal.classList.remove('hidden');
     modal.classList.add('flex');
 }
@@ -47,8 +54,7 @@ function closePaymentModal() {
 }
 
 function confirmPayment() {
-    // In a real startup, you'd use a Webhook to verify this. 
-    // For MVP, we use a manual verification message.
-    alert("Transaction Received! Please allow 5-10 minutes for our AI to verify the transaction ID and activate your Pro features.");
+    const plan = document.getElementById('selected-plan-name').innerText;
+    alert(`Request received for ${plan}! Please allow 5-10 minutes for verification. Your receipt will be sent to your registered email.`);
     closePaymentModal();
 }
